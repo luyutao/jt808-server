@@ -73,6 +73,10 @@ jt-server:
     path: D:/jt_data/alarm_file
     # path: /server/jtt808/jt_data/alarm_file
 
+# logging:
+#   level:
+#     root: OFF
+
 # springdoc:
 #   swagger-ui:
 #     enabled: false
