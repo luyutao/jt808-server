@@ -40,7 +40,8 @@ public class OtherController {
     @Operation(hidden = true)
     @GetMapping
     public void doc(HttpServletResponse response) throws IOException {
-        response.sendRedirect("doc.html");
+        //response.sendRedirect("doc.html");
+        response.getWriter().write("OK");
     }
 
     @Operation(summary = "终端实时信息查询")
