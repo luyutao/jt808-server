@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# 配置部分
-PORT=8100
+# 检查是否提供了命令行参数
+if [ -z "$1" ]; then
+    PORT=8100
+else
+    PORT=$1
+fi
 
 echo "[$(date)] 检查端口 $PORT 是否被占用..."
 

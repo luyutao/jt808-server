@@ -1,29 +1,13 @@
 #!/bin/bash
 
+# 结束进程
+./stop.sh 8100
+
 # 配置部分
-PORT=8100
 JAR_FILE="/server/jtt808/jtt808-server.jar"
 LOG_FILE="/server/jtt808/jtt808-server.log"
 
-echo "[$(date)] 检查端口 $PORT 是否被占用..."
-
-# 查找占用端口的 PID
-PID=$(lsof -t -i:$PORT)
-
-if [ ! -z "$PID" ]; then
-    echo "发现进程 PID $PID 占用了端口 $PORT，正在终止..."
-    kill -9 $PID
-    if [ $? -eq 0 ]; then
-        echo "进程已成功终止。"
-    else
-        echo "无法终止进程 PID $PID"
-        exit 1
-    fi
-else
-    echo "端口 $PORT 当前未被占用。"
-fi
-
-echo "正在启动新的 jar 应用：$JAR_FILE"
+echo "正在启动新的 JAR 应用：$JAR_FILE"
 nohup java -jar $JAR_FILE > $LOG_FILE 2>&1 &
 
 NEW_PID=$!
